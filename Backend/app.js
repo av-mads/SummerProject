@@ -1,19 +1,10 @@
-const express = require('express');
-const mongoose = require('mongoose');
-require('dotenv').config();
+const express = require('express')
 const app = express();
-//var index = require('./routes/index.js')
 
-// Use routes
-//app.use('/', index);
-
-// Connect to db
-mongoose.connect(process.env.Db_CONNECTION, { useNewUrlParser: true }).then(console.log('con sucess'));
-
-// Routes
 app.get('/', (req, res) => {
-    res.send('Home')
+  res.send('Hello World!')
 });
 
-// Listen to server
-app.listen(3000);
+app.listen(8000, () => {
+  console.log('Example app listening on port 8000!')
+});
