@@ -8,7 +8,7 @@ var index = require('./Routes/index.js')
 app.use('/', index);
 
 // Connect to db
-mongoose.connect(process.env.Db_CONNECTION, { useNewUrlParser: true }).then(console.log('con sucess'));
+mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true }).then(console.log('con sucess'));
 
 // Routes
 app.get('/', (req, res) => {
