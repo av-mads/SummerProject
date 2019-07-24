@@ -8,24 +8,20 @@ import {
 
 export class MatchListItem extends Component {
     componentDidMount(){
-        this.setState = { 
-            team1: this.props.team1,
-            team2: this.props.team1,
-        };
     }
 
     render(){
         return (
             <View style={styles.container}>
                 <View style={styles.leftBackground}>
-                    <Image source={this.props.team1.logo} style={styles.teamLogo}/>
+                    <Image source={this.props.team2.logo} style={styles.teamLogo}/>
                 </View>
                 <View style={styles.nameContainer}>
                     <Text style={styles.teamOne}>{this.props.team1.name}</Text>
                     <Text style={styles.teamTwo}>{this.props.team2.name}</Text>
                 </View>
                 <View style={styles.rightBackground}>
-                    <Image source={this.props.team2.logo} style={styles.teamLogo}/>
+                    <Image source={this.props.team1.logo} style={styles.teamLogo}/>
                 </View>
             </View>
         )
@@ -37,7 +33,11 @@ const styles = StyleSheet.create({
         flexDirection:"row",
         justifyContent: "center",
         backgroundColor: '#de9b35',
-        marginTop:10
+
+        marginTop:10,
+
+        borderColor: '#aaaaaa',
+        borderBottomWidth: 1
     },
     leftBackground:{
         backgroundColor: '#5d79ae',
