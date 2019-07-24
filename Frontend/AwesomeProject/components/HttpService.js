@@ -20,22 +20,6 @@ export class HttpService extends React.Component {
       isLoaded: true,
       dataSource: response
     }));
-
-    // fetch('https://api.pandascore.co/csgo/matches?token=PUbBYoQNl8UBcjZ0nvOHSPbJEGMEHtV75-437VksZ2bsKdNOb34')
-    // .then((response) => response.json())
-    // .then((responseJson) => {
-
-    //   this.setState({
-    //     isLoading: false,
-    //     dataSource: responseJson,
-    //   }, function(){
-
-    //   });
-
-    // })
-    // .catch((error) =>{
-    //   console.error(error);
-    // });
   }
   
 
