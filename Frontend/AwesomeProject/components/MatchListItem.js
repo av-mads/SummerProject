@@ -79,6 +79,7 @@ const styles = StyleSheet.create({
         textAlignVertical:'center',
         backgroundColor:"#de9b35",
         borderBottomLeftRadius:12,
+        paddingRight: 12,
     },
     teamTwo:{
         flex:1,
@@ -86,5 +87,6 @@ const styles = StyleSheet.create({
         textAlignVertical:'center',
         backgroundColor:"#5d79ae",
         borderTopRightRadius:12,
+        paddingLeft: 12,
     }
 });
