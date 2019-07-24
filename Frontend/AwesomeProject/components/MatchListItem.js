@@ -34,9 +34,10 @@ export class MatchListItem extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        flexDirection:"row", 
+        flexDirection:"row",
         justifyContent: "center",
         backgroundColor: '#de9b35',
+        marginTop:10
     },
     leftBackground:{
         backgroundColor: '#5d79ae',

@@ -3,6 +3,7 @@ import React from 'react';
 import { FlatList, ActivityIndicator, Text, View  } from 'react-native';
 
 import { MatchListItem} from '../components/MatchListItem'
+import HttpClient from '../services/HttpClient'
 
 export class HttpService extends React.Component {
 
@@ -14,21 +15,27 @@ export class HttpService extends React.Component {
   }
 
   componentDidMount(){
-    fetch('https://api.pandascore.co/csgo/matches?token=PUbBYoQNl8UBcjZ0nvOHSPbJEGMEHtV75-437VksZ2bsKdNOb34')
-    .then((response) => response.json())
-    .then((responseJson) => {
 
-      this.setState({
-        isLoading: false,
-        dataSource: responseJson,
-      }, function(){
+    new HttpClient().matches().then(response => this.setState({
+      isLoaded: true,
+      dataSource: response
+    }));
 
-      });
+    // fetch('https://api.pandascore.co/csgo/matches?token=PUbBYoQNl8UBcjZ0nvOHSPbJEGMEHtV75-437VksZ2bsKdNOb34')
+    // .then((response) => response.json())
+    // .then((responseJson) => {
 
-    })
-    .catch((error) =>{
-      console.error(error);
-    });
+    //   this.setState({
+    //     isLoading: false,
+    //     dataSource: responseJson,
+    //   }, function(){
+
+    //   });
+
+    // })
+    // .catch((error) =>{
+    //   console.error(error);
+    // });
   }
   
 
@@ -42,7 +49,7 @@ export class HttpService extends React.Component {
     }
 
     return(
-      <View style={{flex: 1, paddingTop:20}}>
+      <View style={{flex: 1, paddingTop:20, width:"100%"}}>
         <FlatList
           data={this.state.dataSource}
           keyExtractor={({id}, index) => String(id)}

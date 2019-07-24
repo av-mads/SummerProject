@@ -30,8 +30,6 @@ export default function MyTestScreen() {
         <View style={styles.container}>
           <BananaControl/>
           <Text>Help</Text>
-          <MatchListItem team1={team1} team2={team2} />
-          
           <HttpService/>
         </View>
       </ImageBackground>
