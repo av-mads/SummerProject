@@ -2,6 +2,8 @@ import React from 'react';
 
 import { FlatList, ActivityIndicator, Text, View  } from 'react-native';
 
+import { MatchListItem} from '../components/MatchListItem'
+
 export class HttpService extends React.Component {
 
   constructor(props){
@@ -46,10 +48,23 @@ export class HttpService extends React.Component {
           keyExtractor={({id}, index) => String(id)}
           ItemSeparatorComponent = {this.FlatListItemSeparator}
           renderItem={({item}) => 
-            (<View>
-              <Text>{item.name}</Text>
-              <Text>{item.status}</Text>
-            </View>)
+            {
+              if(item.opponents.length > 1){
+                return (<MatchListItem team1={{ 
+                  name: item.opponents[0].opponent.name, 
+                  logo: {uri:item.opponents[0].opponent.image_url} 
+                }} 
+                
+                team2={{ 
+                  name: item.opponents[1].opponent.name, 
+                  logo: {uri:item.opponents[1].opponent.image_url} 
+                }} />)
+              }
+              else return (<View>
+                <Text>{item.name}</Text>
+                <Text>{item.status}</Text>
+              </View>);
+            }
          }
         />
       </View>
