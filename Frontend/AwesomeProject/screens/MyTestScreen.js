@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import {BananaControl} from '../components/BananaControl'
 import {MatchListItem} from '../components/MatchListItem'
+import {HttpService} from '../components/HttpService'
 
 export default function MyTestScreen() {
   let pic = {
@@ -21,6 +22,8 @@ export default function MyTestScreen() {
           <BananaControl/>
           <Text>Help</Text>
           <MatchListItem/>
+          
+          <HttpService/>
         </View>
       </ImageBackground>
     );
