@@ -9,40 +9,23 @@ import {
 export class MatchListItem extends Component {
     componentDidMount(){
         this.setState = { 
-            team1: {
-                name: "team alpha",
-                logo: require('../assets/images/Icon-ct-patch-small.png'),
-            },
-            team2: {
-                name: "team omega",
-                logo: require('../assets/images/Icon-t-patch-small.png'),
-            },
+            team1: this.props.team1,
+            team2: this.props.team1,
         };
     }
-
-    state = { 
-        team1: {
-            name: "team alpha",
-            logo: require('../assets/images/Icon-ct-patch-small.png'),
-        },
-        team2: {
-            name: "team omega",
-            logo: require('../assets/images/Icon-t-patch-small.png'),
-        }
-    };
 
     render(){
         return (
             <View style={styles.container}>
                 <View style={styles.leftBackground}>
-                    <Image source={this.state.team1.logo} style={styles.teamLogo}/>
+                    <Image source={this.props.team1.logo} style={styles.teamLogo}/>
                 </View>
                 <View style={styles.nameContainer}>
-                    <Text style={styles.teamOne}>{this.state.team1.name}</Text>
-                    <Text style={styles.teamTwo}>{this.state.team2.name}</Text>
+                    <Text style={styles.teamOne}>{this.props.team1.name}</Text>
+                    <Text style={styles.teamTwo}>{this.props.team2.name}</Text>
                 </View>
                 <View style={styles.rightBackground}>
-                    <Image source={this.state.team2.logo} style={styles.teamLogo}/>
+                    <Image source={this.props.team2.logo} style={styles.teamLogo}/>
                 </View>
             </View>
         )

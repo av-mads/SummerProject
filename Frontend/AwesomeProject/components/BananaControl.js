@@ -16,11 +16,11 @@ export class BananaControl extends Component {
     render(){
         if(!this.state.isUnderControl){
             return (
-                <Text style={{fontSize:40}}>No control of 🍌!</Text>
+                <Text style={{fontSize:40}}>🍌   !Control!   🍌</Text>
             )
         } else {
             return (
-                <Text style={{fontSize:40}}>🍌 under control!</Text>
+                <Text style={{fontSize:40}}>🍌🍌 !Control! 🍌🍌</Text>
             )
         }
     }
