@@ -6,30 +6,31 @@ export class HttpService extends React.Component {
 
   constructor(props){
     super(props);
-    this.state ={ isLoading: true}
+    this.state = {
+      isLoaded: true
+    };
   }
 
   componentDidMount(){
-    return fetch('https://api.pandascore.co/csgo/matches?token=PUbBYoQNl8UBcjZ0nvOHSPbJEGMEHtV75-437VksZ2bsKdNOb34')
-      .then((response) => response.json())
-      .then((responseJson) => {
+    fetch('https://api.pandascore.co/csgo/matches?token=PUbBYoQNl8UBcjZ0nvOHSPbJEGMEHtV75-437VksZ2bsKdNOb34')
+    .then((response) => response.json())
+    .then((responseJson) => {
 
-        this.setState({
-          isLoading: false,
-          dataSource: responseJson,
-        }, function(){
+      this.setState({
+        isLoading: false,
+        dataSource: responseJson,
+      }, function(){
 
-        });
-
-      })
-      .catch((error) =>{
-        console.error(error);
       });
-  }
 
+    })
+    .catch((error) =>{
+      console.error(error);
+    });
+  }
+  
 
   render(){
-
     if(this.state.isLoading){
       return(
         <View style={{flex: 1, padding: 20}}>
@@ -42,8 +43,14 @@ export class HttpService extends React.Component {
       <View style={{flex: 1, paddingTop:20}}>
         <FlatList
           data={this.state.dataSource}
-          renderItem={({item}) => <Text>{item.slug}, {item.status}</Text>}
-          keyExtractor={({id}, index) => id}
+          keyExtractor={({id}, index) => String(id)}
+          ItemSeparatorComponent = {this.FlatListItemSeparator}
+          renderItem={({item}) => 
+            (<View>
+              <Text>{item.name}</Text>
+              <Text>{item.status}</Text>
+            </View>)
+         }
         />
       </View>
     );
