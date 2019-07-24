@@ -16,12 +16,21 @@ export default function MyTestScreen() {
   let pic = {
     uri: 'https://upload.wikimedia.org/wikipedia/commons/d/de/Bananavarieties.jpg'
   };
+  let team1 = {
+        name: "team alpha",
+        logo: require('../assets/images/Icon-ct-patch-small.png'),
+  };
+  let team2= {
+      name: "team omega",
+      logo: require('../assets/images/Icon-t-patch-small.png'),
+  };
+
   return (
       <ImageBackground source={pic} style={styles.bgImage}>
         <View style={styles.container}>
           <BananaControl/>
           <Text>Help</Text>
-          <MatchListItem/>
+          <MatchListItem team1={team1} team2={team2} />
           
           <HttpService/>
         </View>
