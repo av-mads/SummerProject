@@ -15,10 +15,11 @@ export class HttpService extends React.Component {
   }
 
   componentDidMount(){
-
+    var date = 'null';
     new HttpClient().matches().then(response => this.setState({
       isLoading: false,
-      dataSource: response
+      dataSource: response,
+      date: 'null'
     }));
   }
   
@@ -40,6 +41,10 @@ export class HttpService extends React.Component {
           ItemSeparatorComponent = {this.FlatListItemSeparator}
           renderItem={({item}) => 
             {
+              if(this.date != item.begin_at.substring(0,10)){
+                this.date = item.begin_at.substring(0,10);
+                return (<Text>{item.begin_at.substring(0,10)}</Text>)
+              }
               if(item.opponents.length > 1){
                 return (<MatchListItem 
                   match={item}

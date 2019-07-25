@@ -21,10 +21,10 @@ export class MatchListItem extends Component {
                 </View>
                 <View/>
                 <View style={styles.nameContainer}>
-                    <Text>{this.props.match.begin_at}</Text>
+                    <Text>{this.props.match.begin_at.substring(11,16)}</Text>
                     <Text>{this.props.match.name}</Text>
                     <Text>{this.props.match.league.name}</Text>
-                    <Text>{this.props.matchType}</Text>
+                    <Text>{this.props.match.number_of_games}</Text>
                 </View>
                 <View style={styles.rightBackground}>
                     <Image source={this.props.team2.logo} style={styles.teamLogo}/>
