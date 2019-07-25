@@ -21,9 +21,11 @@ export class MatchListItem extends Component {
                 </View>
                 <View/>
                 <View style={styles.nameContainer}>
-                    <Text>Time:</Text>
-                    <Text>League:</Text>
-                    <Text>Match type:</Text>
+                    <Text>{this.props.time}</Text>
+                    <Text>{this.props.league}</Text>
+                    <Text>{this.props.matchType}</Text>
+                    <Text>{this.props.status}</Text>
+                    <Text>{this.props.result}</Text>
                 </View>
                 <View style={styles.rightBackground}>
                     <Image source={this.props.team2.logo} style={styles.teamLogo}/>
@@ -36,22 +38,27 @@ export class MatchListItem extends Component {
 
 MatchListItem.defaultProps = {
     team1: {
-        logo: require('../assets/images/Icon-t-patch-small'),
-        name: "Undetermined"
+        logo: require('../assets/images/Icon-t-patch-small.png'),
+        name: "TBD"
     },
     team2: {
-        logo: require('../assets/images/Icon-ct-patch-small'),
-        name: "Undetermined"
-    }
+        logo: require('../assets/images/Icon-ct-patch-small.png'),
+        name: "TBD"
+    },
+    date: "now",
+    time: "10:00",
+    league: "ESL",
+    matchType: "best of 3",
+    status: "upcoming",
+    result: "TBD",
 }
 
 const styles = StyleSheet.create({
     container: {
         flexDirection:"row",
         justifyContent: 'space-between',
-        marginTop:10,
         backgroundColor:'#fff',
-        borderColor: '#aaaaaa',
+        borderColor: '#cacaca',
         borderBottomWidth: 1
     },
     leftBackground:{
@@ -63,8 +70,7 @@ const styles = StyleSheet.create({
         paddingHorizontal:8,
         flex:1,
         //backgroundColor:"#de9b35",
-        alignItems:'flex-end',
-        textAlign:'right'
+        alignItems:'center',
     },
     nameContainer:{
         flex:4, 
@@ -73,7 +79,7 @@ const styles = StyleSheet.create({
         borderStartWidth:1,
         borderEndWidth:1,
         borderStartColor:'#dddddd',
-        borderEndColor:'#777777',
+        borderEndColor:'#dddddd',
     },
     teamLogo:{
         width:52, 
@@ -82,5 +88,6 @@ const styles = StyleSheet.create({
     },
     teamName:{
         flex:1,
+        textAlign:'center',
     },
 });

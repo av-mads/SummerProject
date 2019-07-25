@@ -6,7 +6,7 @@ export class BananaControl extends Component {
     componentDidMount(){
         setInterval(() => {
             this.setState(previousState =>(
-                {}
+                {isUnderControl:!previousState.isUnderControl}
             ))
         }, 1000);
     }

@@ -41,26 +41,36 @@ export class HttpService extends React.Component {
           renderItem={({item}) => 
             {
               if(item.opponents.length > 1){
-                return (<MatchListItem team1={{ 
-                  name: item.opponents[0].opponent.name, 
-                  logo: {uri:item.opponents[0].opponent.image_url} 
-                }} 
-                
-                team2={{ 
-                  name: item.opponents[1].opponent.name, 
-                  logo: {uri:item.opponents[1].opponent.image_url} 
-                }} />)
+                return (<MatchListItem 
+                  match={item}
+                  team1={{ 
+                    name: item.opponents[0].opponent.name, 
+                    logo: {uri:item.opponents[0].opponent.image_url} 
+                  }} 
+                  
+                  team2={{ 
+                    name: item.opponents[1].opponent.name, 
+                    logo: {uri:item.opponents[1].opponent.image_url} 
+                  }} 
+                  status={item.status}
+                  result={item.status=="finished"&&item.winner!=null?"Winner is "+item.winner.name:""} />)
               }
               else if(item.opponents.length === 1){
-                return (<MatchListItem team1={{ 
-                  name: item.opponents[0].opponent.name, 
-                  logo: {uri:item.opponents[0].opponent.image_url} 
-                }} />)
+                return (<MatchListItem
+                  match={item}
+                  team1={{ 
+                    name: item.opponents[0].opponent.name, 
+                    logo: {uri:item.opponents[0].opponent.image_url} 
+                  }}
+                  status={item.status}
+                  result={item.status=="finished"&&item.winner!=null?"Winner is "+item.winner.name:""} />)
               }
-              else return (<View>
-                <Text>{item.name}</Text>
-                <Text>{item.status}</Text>
-              </View>);
+              else return (<MatchListItem 
+                match={item}
+                league={item.league.name}
+                matchType={item.match_type + " " + item.number_of_games}
+                status={item.status} 
+                result={item.status=="finished"&&item.winner!=null?"Winner is "+item.winner.name:""} />);
             }
          }
         />
