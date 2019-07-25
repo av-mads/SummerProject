@@ -26,7 +26,7 @@ export class HttpService extends React.Component {
   render(){
     if(this.state.isLoading){
       return(
-        <View style={{flex: 1, padding: 20}}>
+        <View style={{flex: 2, padding: 20}}>
           <ActivityIndicator/>
         </View>
       )
@@ -49,6 +49,12 @@ export class HttpService extends React.Component {
                 team2={{ 
                   name: item.opponents[1].opponent.name, 
                   logo: {uri:item.opponents[1].opponent.image_url} 
+                }} />)
+              }
+              else if(item.opponents.length === 1){
+                return (<MatchListItem team1={{ 
+                  name: item.opponents[0].opponent.name, 
+                  logo: {uri:item.opponents[0].opponent.image_url} 
                 }} />)
               }
               else return (<View>

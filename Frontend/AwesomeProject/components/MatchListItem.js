@@ -18,6 +18,7 @@ export class MatchListItem extends Component {
                 <View style={styles.leftBackground}>
                     <Image source={this.props.team2.logo} style={styles.teamLogo}/>
                 </View>
+                <View/>
                 <View style={styles.nameContainer}>
                     <Text style={styles.teamOne}>{this.props.team1.name}</Text>
                     <Text style={styles.teamTwo}>{this.props.team2.name}</Text>
@@ -27,6 +28,17 @@ export class MatchListItem extends Component {
                 </View>
             </View>
         )
+    }
+}
+
+MatchListItem.defaultProps = {
+    team1: {
+        logo: require('../assets/images/Icon-t-patch-small'),
+        name: "Undetermined"
+    },
+    team2: {
+        logo: require('../assets/images/Icon-ct-patch-small'),
+        name: "Undetermined"
     }
 }
 
