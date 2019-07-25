@@ -10,14 +10,14 @@ export class HttpService extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      isLoaded: true
+      isLoading: true
     };
   }
 
   componentDidMount(){
 
     new HttpClient().matches().then(response => this.setState({
-      isLoaded: true,
+      isLoading: false,
       dataSource: response
     }));
   }

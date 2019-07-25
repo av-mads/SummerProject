@@ -16,15 +16,18 @@ export class MatchListItem extends Component {
         return (
             <View style={styles.container}>
                 <View style={styles.leftBackground}>
-                    <Image source={this.props.team2.logo} style={styles.teamLogo}/>
+                    <Image source={this.props.team1.logo} style={styles.teamLogo}/>
+                    <Text style={styles.teamName}>{this.props.team1.name}</Text>
                 </View>
                 <View/>
                 <View style={styles.nameContainer}>
-                    <Text style={styles.teamOne}>{this.props.team1.name}</Text>
-                    <Text style={styles.teamTwo}>{this.props.team2.name}</Text>
+                    <Text>Time:</Text>
+                    <Text>League:</Text>
+                    <Text>Match type:</Text>
                 </View>
                 <View style={styles.rightBackground}>
-                    <Image source={this.props.team1.logo} style={styles.teamLogo}/>
+                    <Image source={this.props.team2.logo} style={styles.teamLogo}/>
+                    <Text style={styles.teamName}>{this.props.team2.name}</Text>
                 </View>
             </View>
         )
@@ -45,46 +48,39 @@ MatchListItem.defaultProps = {
 const styles = StyleSheet.create({
     container: {
         flexDirection:"row",
-        justifyContent: "center",
-        backgroundColor: '#de9b35',
-
+        justifyContent: 'space-between',
         marginTop:10,
-
+        backgroundColor:'#fff',
         borderColor: '#aaaaaa',
         borderBottomWidth: 1
     },
     leftBackground:{
-        backgroundColor: '#5d79ae',
-        paddingRight:16,
+        //backgroundColor: '#5d79ae',
+        flex:1,
+        paddingHorizontal:8,
     },
     rightBackground:{
-        paddingLeft:16,
+        paddingHorizontal:8,
+        flex:1,
+        //backgroundColor:"#de9b35",
+        alignItems:'flex-end',
+        textAlign:'right'
     },
     nameContainer:{
-        flex:1, 
+        flex:4, 
         flexDirection: "column", 
-        alignItems:'stretch',
-        marginHorizontal:-16,
+        alignItems:'center',
+        borderStartWidth:1,
+        borderEndWidth:1,
+        borderStartColor:'#dddddd',
+        borderEndColor:'#777777',
     },
     teamLogo:{
         width:52, 
         height:52, 
         margin:4,
     },
-    teamOne:{
+    teamName:{
         flex:1,
-        textAlign:"right",
-        textAlignVertical:'center',
-        backgroundColor:"#de9b35",
-        borderBottomLeftRadius:12,
-        paddingRight: 12,
     },
-    teamTwo:{
-        flex:1,
-        textAlign:"left",
-        textAlignVertical:'center',
-        backgroundColor:"#5d79ae",
-        borderTopRightRadius:12,
-        paddingLeft: 12,
-    }
 });
