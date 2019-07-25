@@ -2,7 +2,7 @@ import React from 'react';
 
 import { FlatList, ActivityIndicator, Text, View  } from 'react-native';
 
-import { MatchListItem} from '../components/MatchListItem'
+import { MatchListItem} from './MatchListItem'
 import HttpClient from '../services/HttpClient'
 
 export class HttpService extends React.Component {

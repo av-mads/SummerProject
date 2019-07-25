@@ -8,7 +8,7 @@ import {
 
 export class MatchListItem extends Component {
     componentDidMount(){
-
+        
         
     }
 
@@ -21,11 +21,10 @@ export class MatchListItem extends Component {
                 </View>
                 <View/>
                 <View style={styles.nameContainer}>
-                    <Text>{this.props.time}</Text>
-                    <Text>{this.props.league}</Text>
+                    <Text>{this.props.match.begin_at}</Text>
+                    <Text>{this.props.match.name}</Text>
+                    <Text>{this.props.match.league.name}</Text>
                     <Text>{this.props.matchType}</Text>
-                    <Text>{this.props.status}</Text>
-                    <Text>{this.props.result}</Text>
                 </View>
                 <View style={styles.rightBackground}>
                     <Image source={this.props.team2.logo} style={styles.teamLogo}/>
@@ -63,12 +62,12 @@ const styles = StyleSheet.create({
     },
     leftBackground:{
         //backgroundColor: '#5d79ae',
-        flex:1,
+        flex:3,
         paddingHorizontal:8,
     },
     rightBackground:{
         paddingHorizontal:8,
-        flex:1,
+        flex:3,
         //backgroundColor:"#de9b35",
         alignItems:'center',
     },
@@ -85,9 +84,15 @@ const styles = StyleSheet.create({
         width:52, 
         height:52, 
         margin:4,
+        alignSelf: 'center',
     },
     teamName:{
         flex:1,
         textAlign:'center',
     },
+    time:{
+        flex:1,
+        textAlign:'center',
+        fontFamily:'roboto',
+    }
 });

@@ -9,8 +9,8 @@ import {
   View,
 } from 'react-native';
 import {BananaControl} from '../components/BananaControl'
-import {MatchListItem} from '../components/MatchListItem'
-import {HttpService} from '../components/HttpService'
+
+import {HttpService} from '../components/Matches'
 
 export default function MyTestScreen() {
   let pic = {
