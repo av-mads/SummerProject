@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {Text, View, ImageBackground } from 'react-native';
-import {WhatIsRequired} from '../test/test';
 
 export class BananaControl extends Component {
     componentDidMount(){
