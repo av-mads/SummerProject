@@ -3,7 +3,8 @@ import {
     Text,
     View, 
     StyleSheet,
-    Image 
+    Image,
+    TouchableNativeFeedback
 } from 'react-native';
 
 export class MatchListItem extends Component {
@@ -14,23 +15,26 @@ export class MatchListItem extends Component {
 
     render(){
         return (
-            <View style={styles.container}>
-                <View style={styles.leftBackground}>
-                    <Image source={this.props.team1.logo} style={styles.teamLogo}/>
-                    <Text style={styles.teamName}>{this.props.team1.name}</Text>
+            <TouchableNativeFeedback onPress={()=>this.props.onPress(this.props.match)} >
+                <View style={styles.container}>
+                    <View style={styles.leftBackground}>
+                        <Image source={this.props.team1.logo} style={styles.teamLogo}/>
+                        <Text style={styles.teamName}>{this.props.team1.name}</Text>
+                    </View>
+                    <View/>
+                    <View style={styles.nameContainer}>
+                        <Text>{this.props.match.begin_at.substring(11,16)}</Text>
+                        <Text>{this.props.match.name}</Text>
+                        <Text>{this.props.match.league.name}</Text>
+                        <Text>{this.props.match.number_of_games}</Text>
+                    </View>
+                    <View style={styles.rightBackground}>
+                        <Image source={this.props.team2.logo} style={styles.teamLogo}/>
+                        <Text style={styles.teamName}>{this.props.team2.name}</Text>
+                    </View>
                 </View>
-                <View/>
-                <View style={styles.nameContainer}>
-                    <Text>{this.props.match.begin_at.substring(11,16)}</Text>
-                    <Text>{this.props.match.name}</Text>
-                    <Text>{this.props.match.league.name}</Text>
-                    <Text>{this.props.match.number_of_games}</Text>
-                </View>
-                <View style={styles.rightBackground}>
-                    <Image source={this.props.team2.logo} style={styles.teamLogo}/>
-                    <Text style={styles.teamName}>{this.props.team2.name}</Text>
-                </View>
-            </View>
+            </TouchableNativeFeedback>
+            
         )
     }
 }
@@ -50,6 +54,7 @@ MatchListItem.defaultProps = {
     matchType: "best of 3",
     status: "upcoming",
     result: "TBD",
+    onPress: (item)=>console.debug("item was pressed: "+item.name),
 }
 
 const styles = StyleSheet.create({
