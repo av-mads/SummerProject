@@ -53,7 +53,6 @@ export class HttpService extends React.Component {
           renderItem={({item, index, section}) => {
             if(item.opponents.length > 1){
                 return (<MatchListItem 
-                  onPress={()=>{this.props.navigation.navigate('Match', item)}}
                   match={item}
                   team1={{ 
                     name: item.opponents[0].opponent.name, 
