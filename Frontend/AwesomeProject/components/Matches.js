@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { FlatList, ActivityIndicator, Text, View  } from 'react-native';
+import { FlatList, SectionList, ActivityIndicator, Text, View  } from 'react-native';
 
 import { MatchListItem} from './MatchListItem'
 import HttpClient from '../services/HttpClient'
@@ -22,7 +22,20 @@ export class HttpService extends React.Component {
       date: 'null'
     }));
   }
-  
+
+  // til brug med https://facebook.github.io/react-native/docs/sectionlist
+  groupBy(data, keySelector){
+    let grouping = new Map();
+    data.forEach(match => {
+      let key = keySelector(match);
+      if(!grouping.has(key)){
+        grouping.set(key, {title: key, data:[match]});
+      } else {
+        grouping.get(key).data.push(match);
+      }
+    });
+    return Array.from(grouping.values());
+  }
 
   render(){
     if(this.state.isLoading){
@@ -35,17 +48,10 @@ export class HttpService extends React.Component {
 
     return(
       <View style={{flex: 1, paddingTop:20, width:"100%"}}>
-        <FlatList
-          data={this.state.dataSource}
-          keyExtractor={({id}, index) => String(id)}
-          ItemSeparatorComponent = {this.FlatListItemSeparator}
-          renderItem={({item}) => 
-            {
-              if(this.date != item.begin_at.substring(0,10)){
-                this.date = item.begin_at.substring(0,10);
-                return (<Text>{item.begin_at.substring(0,10)}</Text>)
-              }
-              if(item.opponents.length > 1){
+        <SectionList
+          stickySectionHeadersEnabled={true}
+          renderItem={({item, index, section}) => {
+            if(item.opponents.length > 1){
                 return (<MatchListItem 
                   match={item}
                   team1={{ 
@@ -77,7 +83,12 @@ export class HttpService extends React.Component {
                 status={item.status} 
                 result={item.status=="finished"&&item.winner!=null?"Winner is "+item.winner.name:""} />);
             }
-         }
+          }
+          renderSectionHeader={({section: {title}}) => (
+            <Text style={{fontWeight: 'bold', textAlign:'center', backgroundColor:'#fff',borderColor:'#ddd',borderWidth:1}}>{title}</Text>
+          )}
+          sections={this.groupBy(this.state.dataSource, item => item.begin_at.substring(0,10))}
+          keyExtractor={(item, index) => item + index}
         />
       </View>
     );
