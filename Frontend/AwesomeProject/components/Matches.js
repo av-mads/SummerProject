@@ -2,8 +2,8 @@ import React from 'react';
 
 import { FlatList, SectionList, ActivityIndicator, Text, View  } from 'react-native';
 
-import { MatchListItem} from './MatchListItem'
-import HttpClient from '../services/HttpClient'
+import { MatchListItem} from './MatchListItem';
+import HttpClient from '../services/HttpClient';
 
 export class HttpService extends React.Component {
 
@@ -53,6 +53,7 @@ export class HttpService extends React.Component {
           renderItem={({item, index, section}) => {
             if(item.opponents.length > 1){
                 return (<MatchListItem 
+                  onPress={()=>{this.props.navigation.navigate('Match', item)}}
                   match={item}
                   team1={{ 
                     name: item.opponents[0].opponent.name, 
