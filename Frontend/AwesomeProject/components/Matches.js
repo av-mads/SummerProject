@@ -46,6 +46,14 @@ export class HttpService extends React.Component {
       )
     }
 
+    if(this.state.dataSource.length == 0){
+      return(
+        <View style={{flex: 2, padding: 20}}>
+          <Text>No upcoming matches</Text>
+        </View>
+      )
+    }
+
     return(
       <View style={{flex: 1, paddingTop:20, width:"100%"}}>
         <SectionList
